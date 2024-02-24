@@ -44,4 +44,4 @@ The service will respond with a JSON object containing the generated random numb
 The response will have a status code of HTTP 200 OK, indicating a successful request.
 
 ## UML diagram
-![UML](https://github.com/MasakiNishi/RNGProvider/assets/23161699/3d6df691-5de1-4936-a29f-ffe6276cc1d8)
+![UMLSequence](https://github.com/MasakiNishi/RNGProvider/assets/23161699/4e8a99ab-cddc-48e7-aab8-a29fdae31e07)

@@ -1,20 +1,22 @@
 @startuml
 
 participant "Program making a request" as Client
-box "RNGProvider Microservice"
-    participant "GET /api/rng/provider/" as API
-end box
+participant "API GET /api/rng/provider/" as API
+participant "RNGProvider Microservice" as RNGProvider
 
 activate Client
 Client -> API: Request random number\nwith parameters\nmin=10 & max=200
 activate API
+activate RNGProvider
+API -> RNGProvider: Provider Class\nget(request, format=None)
+RNGProvider -> API: HTTP 200 OK\njson\n{\n    "random_number": 152\n}
 API -> Client: HTTP 200 OK\njson\n{\n    "random_number": 152\n}
-deactivate API
-deactivate Client
-
-note right of API
+note right of RNGProvider
 If min and max parameters are not specified,
 default values are used (min=0 and max=10000).
 end note
+deactivate RNGProvider
+deactivate API
+deactivate Client
 
 @enduml
