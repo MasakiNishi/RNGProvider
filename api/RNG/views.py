@@ -15,6 +15,10 @@ class Provider(APIView):
         except ValueError:
             return Response({"error": "Invalid min or max value. Please provide integer values."}, status=400)
         
+        # Check if min_value is greater than max_value
+        if min_value > max_value:
+            return Response({"error": "min value should not be greater than max value."}, status=400)
+        
         # Generate a random number between min_value and max_value
         random_number = random.randint(min_value, max_value)
         

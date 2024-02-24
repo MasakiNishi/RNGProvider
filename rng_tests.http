@@ -1,0 +1,31 @@
+@baseURL = http://localhost:8000
+
+### Request with positive min and max values
+GET {{baseURL}}/api/rng/provider/?min=10&max=200
+Accept: application/json
+
+### Request with negative min and max values
+GET {{baseURL}}/api/rng/provider/?min=-10&max=-1
+Accept: application/json
+
+### Request without parameters (using default values)
+GET {{baseURL}}/api/rng/provider/
+Accept: application/json
+
+### Request with only min parameter
+GET {{baseURL}}/api/rng/provider/?min=5
+Accept: application/json
+
+### Request with only max parameter
+GET {{baseURL}}/api/rng/provider/?max=500
+Accept: application/json
+
+### Error Cases
+
+### Request with min greater than max
+GET {{baseURL}}/api/rng/provider/?min=100&max=10
+Accept: application/json
+
+### Request with non-integer parameters
+GET {{baseURL}}/api/rng/provider/?min=ten&max=twenty
+Accept: application/json
